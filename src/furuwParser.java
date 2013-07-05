@@ -1,3 +1,4 @@
+package src;
 // Output created by jacc on Sun Jun 23 04:05:48 JST 2013
 
 
@@ -473,7 +474,7 @@ class furuwParser implements furuwTokens {
     };
 
 
-  /* ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½É¤ï¿½á¥½ï¿½Ã¥É¤ï¿½ï¿½ï¿½ï¿½ */
+  /* ?½Õ¥?½?½?½?½?½É¤?½á¥½?½Ã¥É¤?½?½?½?½ */
 
   CalcParser(CalcLexer l) {
       lexer = l;  
@@ -482,7 +483,7 @@ class furuwParser implements furuwTokens {
   private CalcLexer lexer;
 
   private void yyerror(String msg) {
-      System.out.println("ï¿½ï¿½ï¿½é¡¼: " + msg);
+      System.out.println("?½?½?½é¡¼: " + msg);
       System.exit(1);
   }
 

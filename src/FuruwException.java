@@ -1,4 +1,4 @@
-package furuw;
+package src;
 import furuw.ast.ASTNode;
 
 public class FuruwException extends RuntimeException {

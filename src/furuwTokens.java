@@ -1,3 +1,4 @@
+package src;
 // Output created by jacc on Sun Jun 23 04:05:48 JST 2013
 
 interface furuwTokens {

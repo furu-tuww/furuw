@@ -1,4 +1,4 @@
-package furuw;
+package src;
 
 public abstract class Token{
     public static final Token EOF = new Token(-1){}; // end of file
