@@ -1,3 +1,6 @@
+%{
+package furuw;
+%}
 // Â°À­ÃÍ¤Î·¿
 %semantic Token
 
