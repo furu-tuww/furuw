@@ -1,0 +1,88 @@
+%{
+package furuw;
+import java.util.*;
+import furuw.ast.*;
+%}
+// 属性値の型
+%semantic ASTNode
+
+%token NUMBER EOL STRING IDENTIFIER
+%token GE LE EQ NE AND OR
+%token IF WHILE
+%nonassoc  OR
+%nonassoc  AND
+%right '='
+%left  '|'
+%left  '^'
+%left  '&'
+%left  EQ NE
+%left  '>' '<' GE LE
+%left  '+' '-'
+%left  '*' '/' '%'
+
+%%
+   /* 文法記述とそれに対する動作（還元時に実行されるプログラム） */
+   /* 通常の BNFの → の代わりに : を書く。各BNFは ; で区切る。 */
+   /* 最初に start symbolを書く */
+
+primary	: '(' expr ')'	{ $$ = $2; }
+		| IDENTIFIER	{ $$ = $1; }
+		| NUMBER	{ $$ = $1; }
+		| STRING	{ $$ = $1; }
+		;
+
+factor	: '-' primary	{ $$ = new NegativeExpr( new ArrayList<ASTNode>(){{ add($2); }} ); }
+		| primary	{ $$ = $1; }
+		;
+
+expr	: factor '+' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| factor '-' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| factor '*' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| factor '/' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| factor '%' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		;
+
+block	: '{' block_stmt '}'	{ $$ = BlockStmt( new BlockStmt($2) ); }
+	  	;
+
+block_stmt	:	{ $$ = new ArrayList<ASTNode>(0); }
+			| statement ';' block_stmt		{ $$ = new ArrayList<ASTNode>(){{add($1);}}.addAll($3); }
+			| statement EOL block_stmt		{ $$ = new ArrayList<ASTNode>(){{add($1);}}.addAll($3); }
+			| ';' block_stmt	{ $$ = new ArrayList<ASTNode>(0).addAll($2); }
+			| EOL block_stmt	{ $$ = new ArrayList<ASTNode>(0).addAll($2); }
+			;
+
+simple	: expr	{ $$ = $1; }
+		;
+
+statement	: IF expr block		{ $$ = IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
+			| WHILE expr block		{ $$ = WhileStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
+			| simple			{ $$ = $1; }
+			;
+
+program	: statement ';'	{}
+		| statement EOL	{}
+		| ';'
+		| EOL
+		;
+%%
+
+  /* フィールドやメソッドの定義 */
+
+  furuwParser(Lexer l) {
+      lexer = l;
+  }
+
+  private Lexer lexer;
+
+  private void yyerror(String msg) {
+      System.out.println("エラー: " + msg);
+      System.exit(1);
+  }
+
+  public static void main(String[] args) {
+      Lexer lexer = new Lexer(System.in);
+      furuwParser parser = new furuwParser(lexer);
+      lexer.nextToken();
+      parser.parse();    // parse the input
+  }

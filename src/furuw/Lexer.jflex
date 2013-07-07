@@ -1,6 +1,7 @@
 /* import 宣言はここに書く */
 package furuw;
 import java.io.IOException;
+import furuw.ast.*;
 
 %%
 
@@ -17,7 +18,7 @@ import java.io.IOException;
 %{
   /* jacc とのインタフェースのためのコード */
   int token;
-  Token yylval;
+  ASTNode yylval;
 
   int nextToken() {
     try {
@@ -28,10 +29,10 @@ import java.io.IOException;
   }
 
   int getToken() {
-    return token; 
+    return token;
   }
 
-  double getSemantic() {
+  ASTNode getSemantic() {
     return yylval;
   }
 
@@ -47,7 +48,7 @@ import java.io.IOException;
   }
 
   protected static class IdToken extends Token {
-      private String text; 
+      private String text;
       protected IdToken(int line, String id) {
           super(line);
           text = id;
@@ -70,10 +71,16 @@ Punct = [!\"#\$\%&\'\(\)\*\+,\-\.\/:;\<=\>\?@\[ \]\^_`\{\|\}~]
 %%
   [ \t\f]+   { /* 無視する */ }
   \r|\n|\r\n { return EOL; }
-  [0-9]+     { yylval = new NumToken(yyline(),Integer.parseInt(yytext())); return NUMBER; }
-  [A_Z_a-z][A_Z_a-z0-9]* | == | <= | >= | && | \|\| | {Punct}   { 
-  			 yylval = new IdToken(yyline(),yytext()); return (int)(yytext().charAt(0)); }
-  \"(\\\"|\\\\|\\n|[^\"])*\"  { 
-  			 yylval = new StrToken(yyline(),yytext.substr(1,yytext.length()-1)); return STRING; }
+  [0-9]+     { yylval = new NumberLiteral( new NumToken(yyline,Integer.parseInt(yytext())) ); return NUMBER; }
+  \"(\\\"|\\\\|\\n|[^\"])*\"  {
+  			 yylval = new StringLiteral( new StrToken(yyline,yytext().substring(1,yytext().length()-1)) ); return STRING; }
+  "==" { yylval = new Name( new IdToken(yyline,yytext()) ); return EQ; }
+  "!=" { yylval = new Name( new IdToken(yyline,yytext()) ); return NE; }
+  "<=" { yylval = new Name( new IdToken(yyline,yytext()) ); return GE; }
+  ">=" { yylval = new Name( new IdToken(yyline,yytext()) ); return LE; }
+  "&&" { yylval = new Name( new IdToken(yyline,yytext()) ); return AND; }
+  "||" { yylval = new Name( new IdToken(yyline,yytext()) ); return OR; }
+  {Punct}	 { yylval = new Name( new IdToken(yyline,yytext()) ); return (int)(yytext().charAt(0)); }
+  [A_Z_a-z][A_Z_a-z0-9]* { yylval = new Name( new IdToken(yyline,yytext()) ); return IDENTIFIER; }
 /* error fallback */
-  .                              { throw new Error("不正な文字です <"+ yytext()+">"); }  
+  .                              { throw new Error("不正な文字です <"+ yytext()+">"); }
