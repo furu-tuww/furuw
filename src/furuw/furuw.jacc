@@ -6,17 +6,17 @@ import furuw.ast.*;
 // 属性値の型
 %semantic ASTNode
 
-%token NUMBER EOL STRING IDENTIFIER
+%token NUMBER EOL STRING IDENTIFIER EOF
 %token GE LE EQ NE AND OR
 %token IF WHILE
-%nonassoc  OR
-%nonassoc  AND
+%left  OR
+%left  AND
 %right '='
 %left  '|'
 %left  '^'
 %left  '&'
-%left  EQ NE
-%left  '>' '<' GE LE
+%nonassoc  EQ NE
+%nonassoc  '>' '<' GE LE
 %left  '+' '-'
 %left  '*' '/' '%'
 
@@ -24,6 +24,14 @@ import furuw.ast.*;
    /* 文法記述とそれに対する動作（還元時に実行されるプログラム） */
    /* 通常の BNFの → の代わりに : を書く。各BNFは ; で区切る。 */
    /* 最初に start symbolを書く */
+
+program	:
+		| program statement ';'	{ System.out.println("=> " + $2.eval(varl)); }
+		| program statement EOL	{ System.out.println("=> " + $2.eval(varl)); }
+		| program ';'
+		| program EOL
+		| program EOF	{ System.exit(0); }
+		;
 
 primary	: '(' expr ')'	{ $$ = $2; }
 		| IDENTIFIER	{ $$ = $1; }
@@ -35,44 +43,50 @@ factor	: '-' primary	{ $$ = new NegativeExpr( new ArrayList<ASTNode>(){{ add($2)
 		| primary	{ $$ = $1; }
 		;
 
-expr	: factor '+' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
-		| factor '-' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
-		| factor '*' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
-		| factor '/' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
-		| factor '%' factor	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+
+expr	: factor	{ $$ = $1; }
+		| expr '=' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr EQ  expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr NE  expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr GE  expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr LE  expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '>' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '<' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '+' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '-' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '*' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '/' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
+		| expr '%' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
 		;
 
-block	: '{' block_stmt '}'	{ $$ = BlockStmt( new BlockStmt($2) ); }
+block	: '{' block_stmt '}'	{ $$ = $2; }
 	  	;
 
-block_stmt	:	{ $$ = new ArrayList<ASTNode>(0); }
-			| statement ';' block_stmt		{ $$ = new ArrayList<ASTNode>(){{add($1);}}.addAll($3); }
-			| statement EOL block_stmt		{ $$ = new ArrayList<ASTNode>(){{add($1);}}.addAll($3); }
-			| ';' block_stmt	{ $$ = new ArrayList<ASTNode>(0).addAll($2); }
-			| EOL block_stmt	{ $$ = new ArrayList<ASTNode>(0).addAll($2); }
+block_stmt	:	{ $$ = new BlockStmt(new ArrayList<ASTNode>(0)); }
+			| statement ';' block_stmt		{ $$ = new BlockStmt(new ArrayList<ASTNode>(){{ add($1); addAll($3.getChildren()); }} ); }
+			| statement EOL block_stmt		{ $$ = new BlockStmt(new ArrayList<ASTNode>(){{ add($1); addAll($3.getChildren()); }} ); }
+			| ';' block_stmt	{ $$ = $2; }
+			| EOL block_stmt	{ $$ = $2; }
 			;
 
 simple	: expr	{ $$ = $1; }
 		;
 
-statement	: IF expr block		{ $$ = IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
-			| WHILE expr block		{ $$ = WhileStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
+statement	: IF expr block		{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
+			| WHILE expr block		{ $$ = new WhileStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
 			| simple			{ $$ = $1; }
 			;
 
-program	: statement ';'	{}
-		| statement EOL	{}
-		| ';'
-		| EOL
-		;
 %%
 
   /* フィールドやメソッドの定義 */
 
   furuwParser(Lexer l) {
       lexer = l;
+      varl = new VariableList();
   }
 
+  private VariableList varl;
   private Lexer lexer;
 
   private void yyerror(String msg) {

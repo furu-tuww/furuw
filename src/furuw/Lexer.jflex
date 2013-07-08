@@ -15,6 +15,10 @@ import furuw.ast.*;
 %line
 %column
 
+%eofval{
+	return token = EOF;
+%eofval}
+
 %{
   /* jacc とのインタフェースのためのコード */
   int token;
@@ -74,6 +78,8 @@ Punct = [!\"#\$\%&\'\(\)\*\+,\-\.\/:;\<=\>\?@\[ \]\^_`\{\|\}~]
   [0-9]+     { yylval = new NumberLiteral( new NumToken(yyline,Integer.parseInt(yytext())) ); return NUMBER; }
   \"(\\\"|\\\\|\\n|[^\"])*\"  {
   			 yylval = new StringLiteral( new StrToken(yyline,yytext().substring(1,yytext().length()-1)) ); return STRING; }
+  "while"	{ yylval = new Name( new IdToken(yyline,yytext()) ); return WHILE; }
+  "if" { yylval = new Name( new IdToken(yyline,yytext()) ); return IF; }
   "==" { yylval = new Name( new IdToken(yyline,yytext()) ); return EQ; }
   "!=" { yylval = new Name( new IdToken(yyline,yytext()) ); return NE; }
   "<=" { yylval = new Name( new IdToken(yyline,yytext()) ); return GE; }
