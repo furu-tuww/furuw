@@ -1,4 +1,4 @@
-// Output created by jacc on Tue Jul 09 01:38:48 JST 2013
+// Output created by jacc on Fri Jul 26 12:22:35 JST 2013
 
 
 package furuw;
@@ -29,7 +29,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 62:
+                case 64:
                     yyn = yys0();
                     continue;
 
@@ -38,7 +38,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 63:
+                case 65:
                     yyn = yys1();
                     continue;
 
@@ -47,7 +47,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 64:
+                case 66:
                     yyn = yys2();
                     continue;
 
@@ -56,7 +56,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 65:
+                case 67:
                     yyn = yys3();
                     continue;
 
@@ -65,7 +65,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 66:
+                case 68:
                     yyn = yys4();
                     continue;
 
@@ -74,14 +74,14 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 67:
+                case 69:
                     switch (yytok) {
-                        case EOL:
                         case ';':
-                            yyn = yyr35();
+                        case EOL:
+                            yyn = yyr36();
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
                 case 6:
@@ -89,7 +89,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 68:
+                case 70:
                     switch (yytok) {
                         case EOL:
                             yyn = 29;
@@ -98,7 +98,7 @@ class furuwParser implements furuwTokens {
                             yyn = 30;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
                 case 7:
@@ -110,7 +110,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 69:
+                case 71:
                     yyn = yys7();
                     continue;
 
@@ -123,7 +123,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 70:
+                case 72:
                     yyn = yys8();
                     continue;
 
@@ -136,7 +136,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 71:
+                case 73:
                     yyn = yys9();
                     continue;
 
@@ -149,7 +149,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 72:
+                case 74:
                     switch (yytok) {
                         case IDENTIFIER:
                             yyn = 9;
@@ -167,7 +167,7 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
                 case 11:
@@ -179,7 +179,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 73:
+                case 75:
                     yyn = yys11();
                     continue;
 
@@ -192,72 +192,12 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 74:
+                case 76:
                     yyn = yys12();
                     continue;
 
                 case 13:
                     yyst[yysp] = 13;
-                    yysv[yysp] = (lexer.getSemantic()
-                                 );
-                    yytok = (lexer.nextToken()
-                            );
-                    if (++yysp>=yyst.length) {
-                        yyexpand();
-                    }
-                case 75:
-                    switch (yytok) {
-                        case IDENTIFIER:
-                            yyn = 9;
-                            continue;
-                        case NUMBER:
-                            yyn = 11;
-                            continue;
-                        case STRING:
-                            yyn = 12;
-                            continue;
-                        case '(':
-                            yyn = 14;
-                            continue;
-                        case '-':
-                            yyn = 15;
-                            continue;
-                    }
-                    yyn = 127;
-                    continue;
-
-                case 14:
-                    yyst[yysp] = 14;
-                    yysv[yysp] = (lexer.getSemantic()
-                                 );
-                    yytok = (lexer.nextToken()
-                            );
-                    if (++yysp>=yyst.length) {
-                        yyexpand();
-                    }
-                case 76:
-                    switch (yytok) {
-                        case IDENTIFIER:
-                            yyn = 9;
-                            continue;
-                        case NUMBER:
-                            yyn = 11;
-                            continue;
-                        case STRING:
-                            yyn = 12;
-                            continue;
-                        case '(':
-                            yyn = 14;
-                            continue;
-                        case '-':
-                            yyn = 15;
-                            continue;
-                    }
-                    yyn = 127;
-                    continue;
-
-                case 15:
-                    yyst[yysp] = 15;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -279,12 +219,15 @@ class furuwParser implements furuwTokens {
                         case '(':
                             yyn = 14;
                             continue;
+                        case '-':
+                            yyn = 15;
+                            continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 16:
-                    yyst[yysp] = 16;
+                case 14:
+                    yyst[yysp] = 14;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -293,11 +236,28 @@ class furuwParser implements furuwTokens {
                         yyexpand();
                     }
                 case 78:
-                    yyn = yys16();
+                    switch (yytok) {
+                        case IDENTIFIER:
+                            yyn = 9;
+                            continue;
+                        case NUMBER:
+                            yyn = 11;
+                            continue;
+                        case STRING:
+                            yyn = 12;
+                            continue;
+                        case '(':
+                            yyn = 14;
+                            continue;
+                        case '-':
+                            yyn = 15;
+                            continue;
+                    }
+                    yyn = 131;
                     continue;
 
-                case 17:
-                    yyst[yysp] = 17;
+                case 15:
+                    yyst[yysp] = 15;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -319,15 +279,12 @@ class furuwParser implements furuwTokens {
                         case '(':
                             yyn = 14;
                             continue;
-                        case '-':
-                            yyn = 15;
-                            continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 18:
-                    yyst[yysp] = 18;
+                case 16:
+                    yyst[yysp] = 16;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -336,28 +293,11 @@ class furuwParser implements furuwTokens {
                         yyexpand();
                     }
                 case 80:
-                    switch (yytok) {
-                        case IDENTIFIER:
-                            yyn = 9;
-                            continue;
-                        case NUMBER:
-                            yyn = 11;
-                            continue;
-                        case STRING:
-                            yyn = 12;
-                            continue;
-                        case '(':
-                            yyn = 14;
-                            continue;
-                        case '-':
-                            yyn = 15;
-                            continue;
-                    }
-                    yyn = 127;
+                    yyn = yys16();
                     continue;
 
-                case 19:
-                    yyst[yysp] = 19;
+                case 17:
+                    yyst[yysp] = 17;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -383,11 +323,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 20:
-                    yyst[yysp] = 20;
+                case 18:
+                    yyst[yysp] = 18;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -413,11 +353,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 21:
-                    yyst[yysp] = 21;
+                case 19:
+                    yyst[yysp] = 19;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -443,11 +383,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 22:
-                    yyst[yysp] = 22;
+                case 20:
+                    yyst[yysp] = 20;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -473,11 +413,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 23:
-                    yyst[yysp] = 23;
+                case 21:
+                    yyst[yysp] = 21;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -503,11 +443,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 24:
-                    yyst[yysp] = 24;
+                case 22:
+                    yyst[yysp] = 22;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -533,11 +473,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 25:
-                    yyst[yysp] = 25;
+                case 23:
+                    yyst[yysp] = 23;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -563,11 +503,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 26:
-                    yyst[yysp] = 26;
+                case 24:
+                    yyst[yysp] = 24;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -593,11 +533,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 27:
-                    yyst[yysp] = 27;
+                case 25:
+                    yyst[yysp] = 25;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -623,11 +563,11 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 28:
-                    yyst[yysp] = 28;
+                case 26:
+                    yyst[yysp] = 26;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -653,7 +593,67 @@ class furuwParser implements furuwTokens {
                             yyn = 15;
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
+                    continue;
+
+                case 27:
+                    yyst[yysp] = 27;
+                    yysv[yysp] = (lexer.getSemantic()
+                                 );
+                    yytok = (lexer.nextToken()
+                            );
+                    if (++yysp>=yyst.length) {
+                        yyexpand();
+                    }
+                case 91:
+                    switch (yytok) {
+                        case IDENTIFIER:
+                            yyn = 9;
+                            continue;
+                        case NUMBER:
+                            yyn = 11;
+                            continue;
+                        case STRING:
+                            yyn = 12;
+                            continue;
+                        case '(':
+                            yyn = 14;
+                            continue;
+                        case '-':
+                            yyn = 15;
+                            continue;
+                    }
+                    yyn = 131;
+                    continue;
+
+                case 28:
+                    yyst[yysp] = 28;
+                    yysv[yysp] = (lexer.getSemantic()
+                                 );
+                    yytok = (lexer.nextToken()
+                            );
+                    if (++yysp>=yyst.length) {
+                        yyexpand();
+                    }
+                case 92:
+                    switch (yytok) {
+                        case IDENTIFIER:
+                            yyn = 9;
+                            continue;
+                        case NUMBER:
+                            yyn = 11;
+                            continue;
+                        case STRING:
+                            yyn = 12;
+                            continue;
+                        case '(':
+                            yyn = 14;
+                            continue;
+                        case '-':
+                            yyn = 15;
+                            continue;
+                    }
+                    yyn = 131;
                     continue;
 
                 case 29:
@@ -665,7 +665,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 91:
+                case 93:
                     yyn = yys29();
                     continue;
 
@@ -678,7 +678,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 92:
+                case 94:
                     yyn = yys30();
                     continue;
 
@@ -687,7 +687,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 93:
+                case 95:
                     yyn = yys31();
                     continue;
 
@@ -696,7 +696,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 94:
+                case 96:
                     yyn = yys32();
                     continue;
 
@@ -705,7 +705,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 95:
+                case 97:
                     yyn = yys33();
                     continue;
 
@@ -714,7 +714,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 96:
+                case 98:
                     yyn = yys34();
                     continue;
 
@@ -723,7 +723,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 97:
+                case 99:
                     yyn = yys35();
                     continue;
 
@@ -732,7 +732,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 98:
+                case 100:
                     yyn = yys36();
                     continue;
 
@@ -741,7 +741,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 99:
+                case 101:
                     yyn = yys37();
                     continue;
 
@@ -750,7 +750,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 100:
+                case 102:
                     yyn = yys38();
                     continue;
 
@@ -759,7 +759,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 101:
+                case 103:
                     yyn = yys39();
                     continue;
 
@@ -768,7 +768,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 102:
+                case 104:
                     yyn = yys40();
                     continue;
 
@@ -777,7 +777,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 103:
+                case 105:
                     yyn = yys41();
                     continue;
 
@@ -786,7 +786,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 104:
+                case 106:
                     yyn = yys42();
                     continue;
 
@@ -795,7 +795,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 105:
+                case 107:
                     yyn = yys43();
                     continue;
 
@@ -804,7 +804,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 106:
+                case 108:
                     yyn = yys44();
                     continue;
 
@@ -813,7 +813,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 107:
+                case 109:
                     yyn = yys45();
                     continue;
 
@@ -822,7 +822,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 108:
+                case 110:
                     yyn = yys46();
                     continue;
 
@@ -831,14 +831,17 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 109:
+                case 111:
                     switch (yytok) {
-                        case EOL:
+                        case ELSE:
+                            yyn = 51;
+                            continue;
                         case ';':
+                        case EOL:
                             yyn = yyr33();
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
                 case 48:
@@ -850,7 +853,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 110:
+                case 112:
                     yyn = yys48();
                     continue;
 
@@ -859,14 +862,14 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 111:
+                case 113:
                     switch (yytok) {
-                        case EOL:
                         case ';':
-                            yyn = yyr34();
+                        case EOL:
+                            yyn = yyr35();
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
                 case 50:
@@ -878,43 +881,12 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 112:
+                case 114:
                     yyn = yys50();
                     continue;
 
                 case 51:
                     yyst[yysp] = 51;
-                    if (++yysp>=yyst.length) {
-                        yyexpand();
-                    }
-                case 113:
-                    switch (yytok) {
-                        case '}':
-                            yyn = 55;
-                            continue;
-                    }
-                    yyn = 127;
-                    continue;
-
-                case 52:
-                    yyst[yysp] = 52;
-                    if (++yysp>=yyst.length) {
-                        yyexpand();
-                    }
-                case 114:
-                    switch (yytok) {
-                        case EOL:
-                            yyn = 56;
-                            continue;
-                        case ';':
-                            yyn = 57;
-                            continue;
-                    }
-                    yyn = 127;
-                    continue;
-
-                case 53:
-                    yyst[yysp] = 53;
                     yysv[yysp] = (lexer.getSemantic()
                                  );
                     yytok = (lexer.nextToken()
@@ -923,7 +895,43 @@ class furuwParser implements furuwTokens {
                         yyexpand();
                     }
                 case 115:
-                    yyn = yys53();
+                    switch (yytok) {
+                        case '{':
+                            yyn = 48;
+                            continue;
+                    }
+                    yyn = 131;
+                    continue;
+
+                case 52:
+                    yyst[yysp] = 52;
+                    if (++yysp>=yyst.length) {
+                        yyexpand();
+                    }
+                case 116:
+                    switch (yytok) {
+                        case '}':
+                            yyn = 57;
+                            continue;
+                    }
+                    yyn = 131;
+                    continue;
+
+                case 53:
+                    yyst[yysp] = 53;
+                    if (++yysp>=yyst.length) {
+                        yyexpand();
+                    }
+                case 117:
+                    switch (yytok) {
+                        case EOL:
+                            yyn = 58;
+                            continue;
+                        case ';':
+                            yyn = 59;
+                            continue;
+                    }
+                    yyn = 131;
                     continue;
 
                 case 54:
@@ -935,7 +943,7 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 116:
+                case 118:
                     yyn = yys54();
                     continue;
 
@@ -948,27 +956,23 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 117:
-                    switch (yytok) {
-                        case EOL:
-                        case ';':
-                            yyn = yyr26();
-                            continue;
-                    }
-                    yyn = 127;
+                case 119:
+                    yyn = yys55();
                     continue;
 
                 case 56:
                     yyst[yysp] = 56;
-                    yysv[yysp] = (lexer.getSemantic()
-                                 );
-                    yytok = (lexer.nextToken()
-                            );
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 118:
-                    yyn = yys56();
+                case 120:
+                    switch (yytok) {
+                        case ';':
+                        case EOL:
+                            yyn = yyr34();
+                            continue;
+                    }
+                    yyn = 131;
                     continue;
 
                 case 57:
@@ -980,36 +984,41 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 119:
-                    yyn = yys57();
+                case 121:
+                    switch (yytok) {
+                        case ';':
+                        case EOL:
+                        case ELSE:
+                            yyn = yyr26();
+                            continue;
+                    }
+                    yyn = 131;
                     continue;
 
                 case 58:
                     yyst[yysp] = 58;
+                    yysv[yysp] = (lexer.getSemantic()
+                                 );
+                    yytok = (lexer.nextToken()
+                            );
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 120:
-                    switch (yytok) {
-                        case '}':
-                            yyn = yyr31();
-                            continue;
-                    }
-                    yyn = 127;
+                case 122:
+                    yyn = yys58();
                     continue;
 
                 case 59:
                     yyst[yysp] = 59;
+                    yysv[yysp] = (lexer.getSemantic()
+                                 );
+                    yytok = (lexer.nextToken()
+                            );
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 121:
-                    switch (yytok) {
-                        case '}':
-                            yyn = yyr30();
-                            continue;
-                    }
-                    yyn = 127;
+                case 123:
+                    yyn = yys59();
                     continue;
 
                 case 60:
@@ -1017,13 +1026,13 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 122:
+                case 124:
                     switch (yytok) {
                         case '}':
-                            yyn = yyr29();
+                            yyn = yyr31();
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
                 case 61:
@@ -1031,22 +1040,50 @@ class furuwParser implements furuwTokens {
                     if (++yysp>=yyst.length) {
                         yyexpand();
                     }
-                case 123:
+                case 125:
+                    switch (yytok) {
+                        case '}':
+                            yyn = yyr30();
+                            continue;
+                    }
+                    yyn = 131;
+                    continue;
+
+                case 62:
+                    yyst[yysp] = 62;
+                    if (++yysp>=yyst.length) {
+                        yyexpand();
+                    }
+                case 126:
+                    switch (yytok) {
+                        case '}':
+                            yyn = yyr29();
+                            continue;
+                    }
+                    yyn = 131;
+                    continue;
+
+                case 63:
+                    yyst[yysp] = 63;
+                    if (++yysp>=yyst.length) {
+                        yyexpand();
+                    }
+                case 127:
                     switch (yytok) {
                         case '}':
                             yyn = yyr28();
                             continue;
                     }
-                    yyn = 127;
+                    yyn = 131;
                     continue;
 
-                case 124:
+                case 128:
                     return true;
-                case 125:
+                case 129:
                     yyerror("stack overflow");
-                case 126:
+                case 130:
                     return false;
-                case 127:
+                case 131:
                     yyerror("syntax error");
                     return false;
             }
@@ -1066,26 +1103,26 @@ class furuwParser implements furuwTokens {
 
     private int yys0() {
         switch (yytok) {
-            case ENDINPUT:
-            case IF:
             case WHILE:
-            case STRING:
             case IDENTIFIER:
-            case EOL:
+            case STRING:
             case ';':
+            case EOF:
             case '-':
             case NUMBER:
             case '(':
-            case EOF:
+            case ENDINPUT:
+            case IF:
+            case EOL:
                 return yyr1();
         }
-        return 127;
+        return 131;
     }
 
     private int yys1() {
         switch (yytok) {
             case ENDINPUT:
-                return 124;
+                return 128;
             case EOF:
                 return 7;
             case EOL:
@@ -1107,7 +1144,7 @@ class furuwParser implements furuwTokens {
             case ';':
                 return 16;
         }
-        return 127;
+        return 131;
     }
 
     private int yys2() {
@@ -1136,211 +1173,216 @@ class furuwParser implements furuwTokens {
                 return 27;
             case '>':
                 return 28;
-            case EOL:
             case ';':
+            case EOL:
                 return yyr32();
         }
-        return 127;
+        return 131;
     }
 
     private int yys3() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr13();
         }
-        return yyr13();
+        return 131;
     }
 
     private int yys4() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr12();
         }
-        return yyr12();
+        return 131;
     }
 
     private int yys7() {
         switch (yytok) {
-            case ENDINPUT:
-            case IF:
             case WHILE:
-            case STRING:
             case IDENTIFIER:
-            case EOL:
+            case STRING:
             case ';':
+            case EOF:
             case '-':
             case NUMBER:
             case '(':
-            case EOF:
+            case ENDINPUT:
+            case IF:
+            case EOL:
                 return yyr6();
         }
-        return 127;
+        return 131;
     }
 
     private int yys8() {
         switch (yytok) {
-            case ENDINPUT:
-            case IF:
             case WHILE:
-            case STRING:
             case IDENTIFIER:
-            case EOL:
+            case STRING:
             case ';':
+            case EOF:
             case '-':
             case NUMBER:
             case '(':
-            case EOF:
+            case ENDINPUT:
+            case IF:
+            case EOL:
                 return yyr5();
         }
-        return 127;
+        return 131;
     }
 
     private int yys9() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr8();
         }
-        return yyr8();
+        return 131;
     }
 
     private int yys11() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr9();
         }
-        return yyr9();
+        return 131;
     }
 
     private int yys12() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr10();
         }
-        return yyr10();
+        return 131;
     }
 
     private int yys16() {
         switch (yytok) {
-            case ENDINPUT:
-            case IF:
             case WHILE:
-            case STRING:
             case IDENTIFIER:
-            case EOL:
+            case STRING:
             case ';':
+            case EOF:
             case '-':
             case NUMBER:
             case '(':
-            case EOF:
+            case ENDINPUT:
+            case IF:
+            case EOL:
                 return yyr4();
         }
-        return 127;
+        return 131;
     }
 
     private int yys29() {
         switch (yytok) {
-            case ENDINPUT:
-            case IF:
             case WHILE:
-            case STRING:
             case IDENTIFIER:
-            case EOL:
+            case STRING:
             case ';':
+            case EOF:
             case '-':
             case NUMBER:
             case '(':
-            case EOF:
+            case ENDINPUT:
+            case IF:
+            case EOL:
                 return yyr3();
         }
-        return 127;
+        return 131;
     }
 
     private int yys30() {
         switch (yytok) {
-            case ENDINPUT:
-            case IF:
             case WHILE:
-            case STRING:
             case IDENTIFIER:
-            case EOL:
+            case STRING:
             case ';':
+            case EOF:
             case '-':
             case NUMBER:
             case '(':
-            case EOF:
+            case ENDINPUT:
+            case IF:
+            case EOL:
                 return yyr2();
         }
-        return 127;
+        return 131;
     }
 
     private int yys31() {
@@ -1372,7 +1414,7 @@ class furuwParser implements furuwTokens {
             case '{':
                 return 48;
         }
-        return 127;
+        return 131;
     }
 
     private int yys32() {
@@ -1404,7 +1446,7 @@ class furuwParser implements furuwTokens {
             case '{':
                 return 48;
         }
-        return 127;
+        return 131;
     }
 
     private int yys33() {
@@ -1436,29 +1478,30 @@ class furuwParser implements furuwTokens {
             case ')':
                 return 50;
         }
-        return 127;
+        return 131;
     }
 
     private int yys34() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr11();
         }
-        return yyr11();
+        return 131;
     }
 
     private int yys35() {
@@ -1487,12 +1530,12 @@ class furuwParser implements furuwTokens {
                 return 28;
             case '{':
             case '=':
-            case EOL:
             case ';':
             case ')':
+            case EOL:
                 return yyr15();
         }
-        return 127;
+        return 131;
     }
 
     private int yys36() {
@@ -1517,14 +1560,14 @@ class furuwParser implements furuwTokens {
                 return 28;
             case '{':
             case '=':
-            case EOL:
             case ';':
-            case ')':
             case NE:
             case EQ:
+            case ')':
+            case EOL:
                 return yyr17();
         }
-        return 127;
+        return 131;
     }
 
     private int yys37() {
@@ -1549,14 +1592,14 @@ class furuwParser implements furuwTokens {
                 return 28;
             case '{':
             case '=':
-            case EOL:
             case ';':
-            case ')':
             case NE:
             case EQ:
+            case ')':
+            case EOL:
                 return yyr18();
         }
-        return 127;
+        return 131;
     }
 
     private int yys38() {
@@ -1585,56 +1628,58 @@ class furuwParser implements furuwTokens {
                 return 28;
             case '{':
             case '=':
-            case EOL:
             case ';':
             case ')':
+            case EOL:
                 return yyr16();
         }
-        return 127;
+        return 131;
     }
 
     private int yys39() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr25();
         }
-        return yyr25();
+        return 131;
     }
 
     private int yys40() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr23();
         }
-        return yyr23();
+        return 131;
     }
 
     private int yys41() {
@@ -1646,21 +1691,21 @@ class furuwParser implements furuwTokens {
             case '/':
                 return 25;
             case '{':
-            case '>':
             case '=':
             case '<':
-            case EOL:
             case ';':
-            case '-':
-            case '+':
             case GE:
-            case ')':
+            case '-':
+            case '>':
+            case '+':
             case NE:
-            case LE:
             case EQ:
+            case ')':
+            case LE:
+            case EOL:
                 return yyr21();
         }
-        return 127;
+        return 131;
     }
 
     private int yys42() {
@@ -1672,43 +1717,44 @@ class furuwParser implements furuwTokens {
             case '/':
                 return 25;
             case '{':
-            case '>':
             case '=':
             case '<':
-            case EOL:
             case ';':
-            case '-':
-            case '+':
             case GE:
-            case ')':
+            case '-':
+            case '>':
+            case '+':
             case NE:
-            case LE:
             case EQ:
+            case ')':
+            case LE:
+            case EOL:
                 return yyr22();
         }
-        return 127;
+        return 131;
     }
 
     private int yys43() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
+            case '{':
+            case '=':
+            case '<':
+            case ';':
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr24();
         }
-        return yyr24();
+        return 131;
     }
 
     private int yys44() {
@@ -1733,14 +1779,14 @@ class furuwParser implements furuwTokens {
                 return 28;
             case '{':
             case '=':
-            case EOL:
             case ';':
-            case ')':
             case NE:
             case EQ:
+            case ')':
+            case EOL:
                 return yyr20();
         }
-        return 127;
+        return 131;
     }
 
     private int yys45() {
@@ -1770,12 +1816,12 @@ class furuwParser implements furuwTokens {
             case '>':
                 return 28;
             case '{':
-            case EOL:
             case ';':
             case ')':
+            case EOL:
                 return yyr14();
         }
-        return 127;
+        return 131;
     }
 
     private int yys46() {
@@ -1800,14 +1846,14 @@ class furuwParser implements furuwTokens {
                 return 28;
             case '{':
             case '=':
-            case EOL:
             case ';':
-            case ')':
             case NE:
             case EQ:
+            case ')':
+            case EOL:
                 return yyr19();
         }
-        return 127;
+        return 131;
     }
 
     private int yys48() {
@@ -1827,61 +1873,36 @@ class furuwParser implements furuwTokens {
             case '-':
                 return 15;
             case EOL:
-                return 53;
-            case ';':
                 return 54;
+            case ';':
+                return 55;
             case '}':
                 return yyr27();
         }
-        return 127;
+        return 131;
     }
 
     private int yys50() {
         switch (yytok) {
-            case WHILE:
-            case '(':
-            case '|':
-            case STRING:
-            case NUMBER:
-            case AND:
-            case EOF:
-            case '}':
-            case '^':
-            case IDENTIFIER:
-            case OR:
-            case error:
-            case IF:
-            case ENDINPUT:
-            case '&':
-                return 127;
-        }
-        return yyr7();
-    }
-
-    private int yys53() {
-        switch (yytok) {
-            case IDENTIFIER:
-                return 9;
-            case IF:
-                return 10;
-            case NUMBER:
-                return 11;
-            case STRING:
-                return 12;
-            case WHILE:
-                return 13;
-            case '(':
-                return 14;
-            case '-':
-                return 15;
-            case EOL:
-                return 53;
+            case '{':
+            case '=':
+            case '<':
             case ';':
-                return 54;
-            case '}':
-                return yyr27();
+            case GE:
+            case '/':
+            case '-':
+            case '+':
+            case '*':
+            case '>':
+            case NE:
+            case EQ:
+            case ')':
+            case LE:
+            case '%':
+            case EOL:
+                return yyr7();
         }
-        return 127;
+        return 131;
     }
 
     private int yys54() {
@@ -1901,16 +1922,16 @@ class furuwParser implements furuwTokens {
             case '-':
                 return 15;
             case EOL:
-                return 53;
-            case ';':
                 return 54;
+            case ';':
+                return 55;
             case '}':
                 return yyr27();
         }
-        return 127;
+        return 131;
     }
 
-    private int yys56() {
+    private int yys55() {
         switch (yytok) {
             case IDENTIFIER:
                 return 9;
@@ -1927,16 +1948,16 @@ class furuwParser implements furuwTokens {
             case '-':
                 return 15;
             case EOL:
-                return 53;
-            case ';':
                 return 54;
+            case ';':
+                return 55;
             case '}':
                 return yyr27();
         }
-        return 127;
+        return 131;
     }
 
-    private int yys57() {
+    private int yys58() {
         switch (yytok) {
             case IDENTIFIER:
                 return 9;
@@ -1953,13 +1974,39 @@ class furuwParser implements furuwTokens {
             case '-':
                 return 15;
             case EOL:
-                return 53;
-            case ';':
                 return 54;
+            case ';':
+                return 55;
             case '}':
                 return yyr27();
         }
-        return 127;
+        return 131;
+    }
+
+    private int yys59() {
+        switch (yytok) {
+            case IDENTIFIER:
+                return 9;
+            case IF:
+                return 10;
+            case NUMBER:
+                return 11;
+            case STRING:
+                return 12;
+            case WHILE:
+                return 13;
+            case '(':
+                return 14;
+            case '-':
+                return 15;
+            case EOL:
+                return 54;
+            case ';':
+                return 55;
+            case '}':
+                return yyr27();
+        }
+        return 131;
     }
 
     private int yyr1() { // program : /* empty */
@@ -2026,11 +2073,11 @@ class furuwParser implements furuwTokens {
 
     private int yypblock_stmt() {
         switch (yyst[yysp-1]) {
-            case 56: return 60;
-            case 54: return 59;
-            case 53: return 58;
-            case 48: return 51;
-            default: return 61;
+            case 58: return 62;
+            case 55: return 61;
+            case 54: return 60;
+            case 48: return 52;
+            default: return 63;
         }
     }
 
@@ -2180,8 +2227,9 @@ class furuwParser implements furuwTokens {
         { yyrv = yysv[yysp-2]; }
         yysv[yysp-=3] = yyrv;
         switch (yyst[yysp-1]) {
+            case 32: return 49;
             case 31: return 47;
-            default: return 49;
+            default: return 56;
         }
     }
 
@@ -2197,13 +2245,19 @@ class furuwParser implements furuwTokens {
         return yypstatement();
     }
 
-    private int yyr34() { // statement : WHILE expr block
+    private int yyr34() { // statement : IF expr block ELSE block
+        { yyrv = new IfStmt( new ArrayList<ASTNode>(){{ add(yysv[yysp-4]); add(yysv[yysp-3]); add(yysv[yysp-1]); }} ); }
+        yysv[yysp-=5] = yyrv;
+        return yypstatement();
+    }
+
+    private int yyr35() { // statement : WHILE expr block
         { yyrv = new WhileStmt( new ArrayList<ASTNode>(){{ add(yysv[yysp-2]); add(yysv[yysp-1]); }} ); }
         yysv[yysp-=3] = yyrv;
         return yypstatement();
     }
 
-    private int yyr35() { // statement : simple
+    private int yyr36() { // statement : simple
         { yyrv = yysv[yysp-1]; }
         yysv[yysp-=1] = yyrv;
         return yypstatement();
@@ -2212,7 +2266,7 @@ class furuwParser implements furuwTokens {
     private int yypstatement() {
         switch (yyst[yysp-1]) {
             case 1: return 6;
-            default: return 52;
+            default: return 53;
         }
     }
 
@@ -2220,7 +2274,7 @@ class furuwParser implements furuwTokens {
     };
 
 
-  /* フィールドやメソッドの定義 */
+  /* フィールドやメソ�?��の定義 */
 
   furuwParser(Lexer l) {
       lexer = l;

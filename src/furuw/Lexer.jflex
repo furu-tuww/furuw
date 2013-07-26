@@ -80,6 +80,7 @@ Punct = [!\"#\$\%&\'\(\)\*\+,\-\.\/:;\<=\>\?@\[ \]\^_`\{\|\}~]
   			 yylval = new StringLiteral( new StrToken(yyline,yytext().substring(1,yytext().length()-1)) ); return STRING; }
   "while"	{ yylval = new Name( new IdToken(yyline,yytext()) ); return WHILE; }
   "if" { yylval = new Name( new IdToken(yyline,yytext()) ); return IF; }
+  "else" { yylval = new Name( new IdToken(yyline,yytext()) ); return ELSE; }
   "==" { yylval = new Name( new IdToken(yyline,yytext()) ); return EQ; }
   "!=" { yylval = new Name( new IdToken(yyline,yytext()) ); return NE; }
   "<=" { yylval = new Name( new IdToken(yyline,yytext()) ); return GE; }

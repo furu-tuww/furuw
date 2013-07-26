@@ -1,22 +1,24 @@
-// Output created by jacc on Tue Jul 09 01:38:48 JST 2013
+// Output created by jacc on Fri Jul 26 12:22:35 JST 2013
+
 package furuw;
 
 interface furuwTokens {
     int ENDINPUT = 0;
     int AND = 1;
-    int EOF = 2;
-    int EOL = 3;
-    int EQ = 4;
-    int GE = 5;
-    int IDENTIFIER = 6;
-    int IF = 7;
-    int LE = 8;
-    int NE = 9;
-    int NUMBER = 10;
-    int OR = 11;
-    int STRING = 12;
-    int WHILE = 13;
-    int error = 14;
+    int ELSE = 2;
+    int EOF = 3;
+    int EOL = 4;
+    int EQ = 5;
+    int GE = 6;
+    int IDENTIFIER = 7;
+    int IF = 8;
+    int LE = 9;
+    int NE = 10;
+    int NUMBER = 11;
+    int OR = 12;
+    int STRING = 13;
+    int WHILE = 14;
+    int error = 15;
     // '%' (code=37)
     // '&' (code=38)
     // '(' (code=40)

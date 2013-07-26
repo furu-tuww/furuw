@@ -8,7 +8,7 @@ import furuw.ast.*;
 
 %token NUMBER EOL STRING IDENTIFIER EOF
 %token GE LE EQ NE AND OR
-%token IF WHILE
+%token WHILE IF ELSE
 %left  OR
 %left  AND
 %right '='
@@ -73,6 +73,7 @@ simple	: expr	{ $$ = $1; }
 		;
 
 statement	: IF expr block		{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
+			| IF expr block	ELSE block	{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); add($5); }} ); }
 			| WHILE expr block		{ $$ = new WhileStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
 			| simple			{ $$ = $1; }
 			;
