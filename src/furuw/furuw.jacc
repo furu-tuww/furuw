@@ -28,12 +28,15 @@ import furuw.ast.*;
 program	:
 		| program statement ';'	{ System.out.println("=> " + $2.eval(varl)); }
 		| program statement EOL	{ System.out.println("=> " + $2.eval(varl)); }
+		| program def ';'		{  }
+		| program def EOL		{  }
 		| program ';'
 		| program EOL
 		| program EOF	{ System.exit(0); }
 		;
 
-primary	: '(' expr ')'	{ $$ = $2; }
+primary	: primary postfix	{ }
+		| '(' expr ')'	{ $$ = $2; }
 		| IDENTIFIER	{ $$ = $1; }
 		| NUMBER	{ $$ = $1; }
 		| STRING	{ $$ = $1; }
@@ -43,7 +46,7 @@ factor	: '-' primary	{ $$ = new NegativeExpr( new ArrayList<ASTNode>(){{ add($2)
 		| primary	{ $$ = $1; }
 		;
 
-
+//式
 expr	: factor	{ $$ = $1; }
 		| expr '=' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
 		| expr EQ  expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
@@ -59,9 +62,11 @@ expr	: factor	{ $$ = $1; }
 		| expr '%' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
 		;
 
+//ブロック
 block	: '{' block_stmt '}'	{ $$ = $2; }
 	  	;
 
+//ブロックの中身
 block_stmt	:	{ $$ = new BlockStmt(new ArrayList<ASTNode>(0)); }
 			| statement ';' block_stmt		{ $$ = new BlockStmt(new ArrayList<ASTNode>(){{ add($1); addAll($3.getChildren()); }} ); }
 			| statement EOL block_stmt		{ $$ = new BlockStmt(new ArrayList<ASTNode>(){{ add($1); addAll($3.getChildren()); }} ); }
@@ -69,7 +74,34 @@ block_stmt	:	{ $$ = new BlockStmt(new ArrayList<ASTNode>(0)); }
 			| EOL block_stmt	{ $$ = $2; }
 			;
 
+//仮引数
+param	: IDENTIFIER	{ $$ = $1;}
+		;
+
+//仮引数たち
+params	: param				{ $$ = new ParameterList( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		| params ',' param 	{ $$ = new ParameterList( new ArrayList<ASTNode>(){{ addAll($1.getChildren()); add($3); }} ); }
+		;
+
+//仮引数完全体
+param_list	: '(' ')'	{ $$ = new ParameterList( new ArrayList<ASTNode>() ); }
+			| '(' params ')' { $$ = $2;}
+			;
+
+//なんか定義、関数とか
+def		: "def" IDENTIFIER param_list block	{ $$ = new DefStmt( new ArrayList<ASNode>(){{ add($2); add($3); add($4); }} ); }
+		;
+
+//引数
+args	:				{ }
+		| args ',' expr	{ }
+		;
+
+postfix	: '(' args ')'	{ }
+		;
+
 simple	: expr	{ $$ = $1; }
+		| expr args	{ }
 		;
 
 statement	: IF expr block		{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
@@ -77,6 +109,9 @@ statement	: IF expr block		{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2)
 			| WHILE expr block		{ $$ = new WhileStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
 			| simple			{ $$ = $1; }
 			;
+
+
+
 
 %%
 

@@ -2,7 +2,6 @@ package furuw.ast;
 
 import java.util.ArrayList;
 
-import furuw.Token;
 import furuw.VariableList;
 
 public class IfStmt extends ASTList{
