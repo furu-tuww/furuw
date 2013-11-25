@@ -75,7 +75,7 @@ block_stmt	:	{ $$ = new BlockStmt(new ArrayList<ASTNode>(0)); }
 			;
 
 //仮引数
-param	: IDENTIFIER	{ $$ = $1;}
+param	: IDENTIFIER	{ $$ = $1; }
 		;
 
 //仮引数たち
@@ -84,8 +84,8 @@ params	: param				{ $$ = new ParameterList( new ArrayList<ASTNode>(){{ add($1); 
 		;
 
 //仮引数完全体
-param_list	: '(' ')'	{ $$ = new ParameterList( new ArrayList<ASTNode>() ); }
-			| '(' params ')' { $$ = $2;}
+param_list	: '('        ')'	{ $$ = new ParameterList( new ArrayList<ASTNode>() ); }
+			| '(' params ')'	{ $$ = $2; }
 			;
 
 //なんか定義、関数とか
@@ -93,11 +93,12 @@ def		: "def" IDENTIFIER param_list block	{ $$ = new DefStmt( new ArrayList<ASNod
 		;
 
 //引数
-args	:				{ }
-		| args ',' expr	{ }
+args	: expr			{ $$ = new Postfix( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		| args ',' expr	{ $$ = new Postfix( new ArrayList<ASTNode>(){{ addAll($1.getChildren()); add($3); }} ); }
 		;
 
-postfix	: '(' args ')'	{ }
+postfix	: '(' args ')'	{ $$ = $1; }
+		| '('	   ')'	{ $$ = new ParameterList( new ArrayList<ASTNode>() ); }
 		;
 
 simple	: expr	{ $$ = $1; }
