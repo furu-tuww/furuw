@@ -1,6 +1,7 @@
 package furuw.ast;
 import java.util.ArrayList;
 
+import furuw.Function;
 import furuw.VariableList;
 
 public class DefStmt extends ASTList{
@@ -15,7 +16,7 @@ public class DefStmt extends ASTList{
 	}
 
 	public Object eval(VariableList varl) {
-
-		return null;
+		varl.putNew(name(), new Function(parameters(), body(), varl));
+		return name();
 	}
 }

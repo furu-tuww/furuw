@@ -12,6 +12,7 @@ public class ASTLeaf extends ASTNode{
   public ArrayList<ASTNode> getChildren() { return null; }
   public String location(){ return "at line " + token.getLineNumber(); }
   public Token token(){ return token; }
+  
   public Object eval(VariableList varl) {
 	return null;
   }
