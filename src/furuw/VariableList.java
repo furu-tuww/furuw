@@ -11,6 +11,7 @@ public class VariableList{
 	}
 
 	public void setOuter(VariableList varl){ outer = varl; }
+
 	public Object get(String name){
 		Object v = values.get(name);
 		if(v == null && outer != null){
