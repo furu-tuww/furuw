@@ -1,4 +1,5 @@
 // Output created by jacc on Mon Dec 09 17:05:18 JST 2013
+package furuw;
 
 interface furuwTokens {
     int ENDINPUT = 0;
