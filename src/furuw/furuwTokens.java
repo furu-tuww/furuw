@@ -1,4 +1,4 @@
-// Output created by jacc on Mon Dec 09 17:05:18 JST 2013
+// Output created by jacc on Wed Jan 15 13:19:45 JST 2014
 package furuw;
 
 interface furuwTokens {

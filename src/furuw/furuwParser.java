@@ -1,4 +1,4 @@
-// Output created by jacc on Mon Dec 09 17:05:18 JST 2013
+// Output created by jacc on Wed Jan 15 13:19:45 JST 2014
 
 
 package furuw;
@@ -2935,25 +2935,25 @@ class furuwParser implements furuwTokens {
     }
 
     private int yyr10() { // primary : '(' expr ')'
-        { yyrv = new PrimaryExpr( new ArrayList<ASTNode>(){{ add(yysv[yysp-2]); }} ); }
+        { yyrv = yysv[yysp-2]; }
         yysv[yysp-=3] = yyrv;
         return yypprimary();
     }
 
     private int yyr11() { // primary : IDENTIFIER
-        { yyrv = new PrimaryExpr( new ArrayList<ASTNode>(){{ add(yysv[yysp-1]); }} );}
+        { yyrv = yysv[yysp-1]; }
         yysv[yysp-=1] = yyrv;
         return yypprimary();
     }
 
     private int yyr12() { // primary : NUMBER
-        { yyrv = new PrimaryExpr( new ArrayList<ASTNode>(){{ add(yysv[yysp-1]); }} ); }
+        { yyrv = yysv[yysp-1]; }
         yysv[yysp-=1] = yyrv;
         return yypprimary();
     }
 
     private int yyr13() { // primary : STRING
-        { yyrv = new PrimaryExpr( new ArrayList<ASTNode>(){{ add(yysv[yysp-1]); }} ); }
+        { yyrv = yysv[yysp-1]; }
         yysv[yysp-=1] = yyrv;
         return yypprimary();
     }

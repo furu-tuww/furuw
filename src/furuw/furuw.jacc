@@ -37,10 +37,17 @@ program	:
 		;
 
 primary	: primary postfix	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ addAll($1.getChildren()); add($2); }} ); }
+/*
 		| '(' expr ')'	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($2); }} ); }
 		| IDENTIFIER	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); }} );}
 		| NUMBER	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); }} ); }
 		| STRING	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		*/
+
+		| '(' expr ')'	{ $$ = $2; }
+		| IDENTIFIER	{ $$ = $1; }
+		| NUMBER	{ $$ = $1; }
+		| STRING	{ $$ = $1; }
 		;
 
 factor	: '-' primary	{ $$ = new NegativeExpr( new ArrayList<ASTNode>(){{ add($2); }} ); }
