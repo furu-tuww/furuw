@@ -16,7 +16,7 @@ public class BinaryExpr extends ASTList{
 			varl.put(((Name)left).name(), c);
 			return c;
 		}else{
-			throw new FuruwException("代入できない", this);
+			throw new FuruwException("代入できない" + left.getClass().getCanonicalName(), this);
 		}
 	  }
 

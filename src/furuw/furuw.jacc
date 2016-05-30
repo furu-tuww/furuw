@@ -9,6 +9,7 @@ import furuw.ast.*;
 %token NUMBER EOL STRING IDENTIFIER EOF
 %token GE LE EQ NE AND OR
 %token WHILE IF ELSE
+%token DEF
 %left  OR
 %left  AND
 %right '='
@@ -28,12 +29,22 @@ import furuw.ast.*;
 program	:
 		| program statement ';'	{ System.out.println("=> " + $2.eval(varl)); }
 		| program statement EOL	{ System.out.println("=> " + $2.eval(varl)); }
+		| program def ';'		{ $2.eval(varl); }
+		| program def EOL		{ $2.eval(varl); }
 		| program ';'
 		| program EOL
 		| program EOF	{ System.exit(0); }
 		;
 
-primary	: '(' expr ')'	{ $$ = $2; }
+primary	: primary postfix	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ addAll($1.getChildren()); add($2); }} ); }
+/*
+		| '(' expr ')'	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($2); }} ); }
+		| IDENTIFIER	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); }} );}
+		| NUMBER	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		| STRING	{ $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		*/
+
+		| '(' expr ')'	{ $$ = $2; }
 		| IDENTIFIER	{ $$ = $1; }
 		| NUMBER	{ $$ = $1; }
 		| STRING	{ $$ = $1; }
@@ -43,7 +54,7 @@ factor	: '-' primary	{ $$ = new NegativeExpr( new ArrayList<ASTNode>(){{ add($2)
 		| primary	{ $$ = $1; }
 		;
 
-
+//式
 expr	: factor	{ $$ = $1; }
 		| expr '=' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
 		| expr EQ  expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
@@ -59,9 +70,11 @@ expr	: factor	{ $$ = $1; }
 		| expr '%' expr	{ $$ = new BinaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); add($3); }} ); }
 		;
 
+//ブロック
 block	: '{' block_stmt '}'	{ $$ = $2; }
 	  	;
 
+//ブロックの中身
 block_stmt	:	{ $$ = new BlockStmt(new ArrayList<ASTNode>(0)); }
 			| statement ';' block_stmt		{ $$ = new BlockStmt(new ArrayList<ASTNode>(){{ add($1); addAll($3.getChildren()); }} ); }
 			| statement EOL block_stmt		{ $$ = new BlockStmt(new ArrayList<ASTNode>(){{ add($1); addAll($3.getChildren()); }} ); }
@@ -69,7 +82,35 @@ block_stmt	:	{ $$ = new BlockStmt(new ArrayList<ASTNode>(0)); }
 			| EOL block_stmt	{ $$ = $2; }
 			;
 
+//仮引数
+param	: IDENTIFIER	{ $$ = $1; }
+		;
+
+//仮引数たち
+params	: param				{ $$ = new ParameterList( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		| params ',' param 	{ $$ = new ParameterList( new ArrayList<ASTNode>(){{ addAll($1.getChildren()); add($3); }} ); }
+		;
+
+//仮引数完全体
+param_list	: '('        ')'	{ $$ = new ParameterList( new ArrayList<ASTNode>() ); }
+			| '(' params ')'	{ $$ = $2; }
+			;
+
+//なんか定義、関数とか
+def		: DEF IDENTIFIER param_list block	{ $$ = new DefStmt( new ArrayList<ASTNode>(){{ add($2); add($3); add($4); }} ); }
+		;
+
+//引数
+args	: expr			{ $$ = new Arguments( new ArrayList<ASTNode>(){{ add($1); }} ); }
+		| args ',' expr	{ $$ = new Arguments( new ArrayList<ASTNode>(){{ addAll($1.getChildren()); add($3); }} ); }
+		;
+
+postfix	: '(' args ')'	{ $$ = $2; }
+		| '('	   ')'	{ $$ = new Arguments( new ArrayList<ASTNode>() ); }
+		;
+
 simple	: expr	{ $$ = $1; }
+		| expr args	{  $$ = new PrimaryExpr( new ArrayList<ASTNode>(){{ add($1); add($2); }} ); }
 		;
 
 statement	: IF expr block		{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2); add($3); }} ); }
@@ -78,13 +119,16 @@ statement	: IF expr block		{ $$ = new IfStmt( new ArrayList<ASTNode>(){{ add($2)
 			| simple			{ $$ = $1; }
 			;
 
+
+
+
 %%
 
   /* フィールドやメソッドの定義 */
 
   furuwParser(Lexer l) {
       lexer = l;
-      varl = new VariableList();
+      varl = new VariableList(null);
   }
 
   private VariableList varl;

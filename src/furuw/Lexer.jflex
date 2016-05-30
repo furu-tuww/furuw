@@ -87,7 +87,8 @@ Punct = [!\"#\$\%&\'\(\)\*\+,\-\.\/:;\<=\>\?@\[ \]\^_`\{\|\}~]
   ">=" { yylval = new Name( new IdToken(yyline,yytext()) ); return LE; }
   "&&" { yylval = new Name( new IdToken(yyline,yytext()) ); return AND; }
   "||" { yylval = new Name( new IdToken(yyline,yytext()) ); return OR; }
+  "def" { yylval = new Name( new IdToken(yyline,yytext()) ); return DEF; }
   {Punct}	 { yylval = new Name( new IdToken(yyline,yytext()) ); return (int)(yytext().charAt(0)); }
-  [A_Z_a-z][A_Z_a-z0-9]* { yylval = new Name( new IdToken(yyline,yytext()) ); return IDENTIFIER; }
+  [A-Z_a-z][A-Z_a-z0-9]* { yylval = new Name( new IdToken(yyline,yytext()) ); return IDENTIFIER; }
 /* error fallback */
   .                              { throw new Error("不正な文字です <"+ yytext()+">"); }
